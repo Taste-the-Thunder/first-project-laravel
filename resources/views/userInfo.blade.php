@@ -3,6 +3,7 @@
 @section('main-section')
     User Info<br>
     <form action="/user-info" method="POST">
+        @csrf
         <input type="text" name="name" placeholder="name"><br>
         <input type="text" name="email" placeholder="email"><br>
         <input type="password" name="password" placeholder="password"><br>
