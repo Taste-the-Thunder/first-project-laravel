@@ -21,8 +21,16 @@ class BaseController extends Controller
     {
         return view('userInfo');
     }
-    public function userInfoCreate()
+    public function userInfoCreate(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:5',
+            'email' => 'required'
+        ]);
+
         echo "On form Create";
+        print_r($request->all());
+        dd($request->all());
+        echo "down";
     }
 }
