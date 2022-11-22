@@ -24,8 +24,10 @@ class BaseController extends Controller
     public function userInfoCreate(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:5',
-            'email' => 'required'
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'confirm_password' => 'required|same:password',
         ]);
 
         echo "On form Create";

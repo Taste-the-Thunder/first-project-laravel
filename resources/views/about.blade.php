@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@push('title')
+    <title>About</title>
+@endpush
+
 @section('main-section')
         About Page<br>
         {{ $fullName }}<br>
