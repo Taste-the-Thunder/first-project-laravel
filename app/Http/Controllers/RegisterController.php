@@ -27,6 +27,11 @@ class RegisterController extends Controller
             'password' => $request['password'],
         ]);
 
-        $this->index();
+        return $this->index();
+    }
+    public function destroy($id)
+    {
+        Register::where('id',$id)->delete();
+        return $this->index();
     }
 }

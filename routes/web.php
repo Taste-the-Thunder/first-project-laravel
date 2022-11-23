@@ -12,3 +12,4 @@ Route::post('user-info',[BaseController::class, 'userInfoCreate']);
 
 Route::get('register',[RegisterController::class, 'index']);
 Route::post('register',[RegisterController::class, 'store']);
+Route::delete('register/{id}',[RegisterController::class, 'destroy']);
