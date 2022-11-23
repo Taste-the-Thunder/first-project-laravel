@@ -9,7 +9,8 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('register');
+        $data = Register::all();
+        return view('register', compact('data'));
     }
     public function store(Request $request)
     {
@@ -25,5 +26,7 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'password' => $request['password'],
         ]);
+
+        $this->index();
     }
 }
