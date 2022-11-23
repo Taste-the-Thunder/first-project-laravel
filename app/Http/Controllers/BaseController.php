@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Userinfo;
 use Illuminate\Http\Request;
 
 class BaseController extends Controller
@@ -28,6 +29,12 @@ class BaseController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
+        ]);
+
+        Userinfo::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => $request['password'],
         ]);
 
         echo "On form Create";
