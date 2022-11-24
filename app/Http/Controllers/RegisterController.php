@@ -34,4 +34,18 @@ class RegisterController extends Controller
         Register::where('id',$id)->delete();
         return $this->index();
     }
+    public function edit($id)
+    {
+        $user = Register::where('id',$id)->first();
+        return view('update',compact('user'));
+    }
+    public function update(Request $request, $id)
+    {
+        Register::where('id',$id)->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+        ]);
+        // Register::where('id',$id)->update($request->all());
+        return $this->index();
+    }
 }

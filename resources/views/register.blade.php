@@ -31,12 +31,14 @@
         <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Edit</th>
             <th>Delete</th>
         </tr>
         @foreach ($data as $value )
             <tr>
                 <td>{{$value->name}}</td>
                 <td>{{$value->email}}</td>
+                <td><a href="/register/{{$value->id}}/edit">Edit</a></td>
                 <td>
                     <form action="/register/{{$value->id}}" method="POST">
                         @csrf
