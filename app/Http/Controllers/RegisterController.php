@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Register;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -24,15 +25,15 @@ class RegisterController extends Controller
         Register::create([
             'name' => $request['name'],
             'email' => $request['email'],
-            'password' => $request['password'],
+            'password' => Hash::make($request['password']),
         ]);
 
-        return $this->index();
+        return redirect('/register');
     }
     public function destroy($id)
     {
         Register::where('id',$id)->delete();
-        return $this->index();
+        return redirect('/register');
     }
     public function edit($id)
     {
@@ -46,6 +47,6 @@ class RegisterController extends Controller
             'email' => $request['email'],
         ]);
         // Register::where('id',$id)->update($request->all());
-        return $this->index();
+        return redirect('/register');
     }
 }
