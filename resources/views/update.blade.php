@@ -6,15 +6,15 @@
 
 @section('main-section')
     Update User<br>
-    {{$user}}
-    <form action="/register/{{ $user->id }}" method="POST">
+    {{$register}}
+    <form action="/register/{{ $register->id }}" method="POST">
         @csrf
         @method('PUT')
-        <input type="text" name="name" value="{{$user->name}}"><br>
+        <input type="text" name="name" value="{{$register->name}}"><br>
         @error('name')
             {{$message}}<br>
         @enderror
-        <input type="text" name="email" value="{{$user->email}}"><br>
+        <input type="text" name="email" value="{{$register->email}}"><br>
         @error('email')
             {{$message}}<br>
         @enderror

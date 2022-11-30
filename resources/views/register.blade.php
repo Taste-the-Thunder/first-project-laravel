@@ -26,6 +26,9 @@
         @enderror
         <input type="submit" value="Submit">
     </form>
+
+<br>
+<img src="{{ asset('images/thor.jpg')}}" alt="thor">
 <br>
     <table border="2px">
         <tr>

@@ -8,11 +8,33 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $data = Register::all();
         return view('register', compact('data'));
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -30,23 +52,55 @@ class RegisterController extends Controller
 
         return redirect('/register');
     }
-    public function destroy($id)
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Register  $register
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Register $register)
     {
-        Register::where('id',$id)->delete();
-        return redirect('/register');
+        //
     }
-    public function edit($id)
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Register  $register
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Register $register)
     {
-        $user = Register::where('id',$id)->first();
-        return view('update',compact('user'));
+        return view('update',compact('register'));
     }
-    public function update(Request $request, $id)
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Register  $register
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Register $register)
     {
-        Register::where('id',$id)->update([
+        $register->update([
             'name' => $request['name'],
             'email' => $request['email'],
         ]);
         // Register::where('id',$id)->update($request->all());
+        return redirect('/register');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Register  $register
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Register $register)
+    {
+        $register->delete();
         return redirect('/register');
     }
 }
